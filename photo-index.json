@@ -2,12 +2,12 @@
 layout: null
 ---
 [
-{% assign photo_files = site.static_files | sort: "relative_path" %}
+{% assign photo_files = site.static_files | sort: "path" %}
 {% assign first_photo = true %}
 {% for file in photo_files %}
-  {% assign source_path_parts = file.relative_path | split: "photos/" %}
-  {% if source_path_parts.size > 1 %}
-    {% assign photo_path = source_path_parts.last | prepend: "photos/" %}
+  {% assign photo_path = file.path | remove_first: "/" %}
+  {% assign photo_prefix = photo_path | slice: 0, 7 %}
+  {% if photo_prefix == "photos/" %}
     {% assign relative_photo_path = photo_path | remove_first: "photos/" %}
     {% assign path_parts = relative_photo_path | split: "/" %}
     {% assign filename_parts = path_parts.last | split: "." %}
