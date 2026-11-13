@@ -386,18 +386,27 @@ figure {
 }
 
 .photo-dialog-close {
-  display: block;
-  margin: 0 0 1rem auto;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid var(--vintage-beige);
-  background: var(--control-background);
-  color: var(--control-foreground);
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0 0.75rem auto;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--muted-foreground);
   cursor: pointer;
+  font-size: 1.75rem;
+  line-height: 1;
 }
 
 .photo-dialog-close:hover {
-  border-color: var(--amber-gold);
   color: var(--hover-foreground);
+}
+
+.photo-dialog-close:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
 }
 
 .photo-dialog-image {
