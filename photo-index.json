@@ -1,0 +1,23 @@
+---
+layout: null
+---
+[
+{% assign photo_files = site.static_files | sort: "relative_path" %}
+{% assign first_photo = true %}
+{% for file in photo_files %}
+  {% assign photo_path = file.relative_path | remove_first: "/" %}
+  {% if photo_path contains "photos/" %}
+    {% assign relative_photo_path = photo_path | remove_first: "photos/" %}
+    {% assign path_parts = relative_photo_path | split: "/" %}
+    {% assign filename_parts = path_parts.last | split: "." %}
+    {% assign extension = filename_parts.last | downcase %}
+    {% if path_parts.size == 3 %}
+      {% if extension == "jpg" or extension == "jpeg" or extension == "png" or extension == "webp" or extension == "gif" %}
+        {% unless first_photo %},{% endunless %}
+        {"path":{{ photo_path | jsonify }},"set":{{ path_parts[0] | jsonify }},"description":{{ path_parts[1] | jsonify }}}
+        {% assign first_photo = false %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+]

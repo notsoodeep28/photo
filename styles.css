@@ -559,8 +559,7 @@ figure {
 }
 
 .photo-grid.is-masonry {
-  grid-auto-rows: 1px;
-  row-gap: 0;
+  grid-auto-rows: 8px;
 }
 
 .photo-grid figure {

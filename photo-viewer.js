@@ -3,7 +3,12 @@ const photoDialogImage = photoDialog.querySelector(".photo-dialog-image");
 const photoDialogCaption = photoDialog.querySelector(".photo-dialog-caption");
 const photoDialogClose = photoDialog.querySelector(".photo-dialog-close");
 
-document.querySelectorAll(".photo-trigger").forEach((trigger) => {
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest(".photo-trigger");
+  if (!trigger) {
+    return;
+  }
+
   const image = trigger.querySelector("img");
   const figure = trigger.closest("figure");
   const collection = trigger.closest(".collection-card");
@@ -15,12 +20,10 @@ document.querySelectorAll(".photo-trigger").forEach((trigger) => {
     throw new Error("Every photo needs an image and a description.");
   }
 
-  trigger.addEventListener("click", () => {
-    photoDialogImage.src = image.currentSrc || image.src;
-    photoDialogImage.alt = image.alt;
-    photoDialogCaption.textContent = description.textContent.trim();
-    photoDialog.showModal();
-  });
+  photoDialogImage.src = image.currentSrc || image.src;
+  photoDialogImage.alt = image.alt;
+  photoDialogCaption.textContent = description.textContent.trim();
+  photoDialog.showModal();
 });
 
 photoDialogClose.addEventListener("click", () => photoDialog.close());

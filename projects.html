@@ -9,7 +9,9 @@
     <title>Photo Sets - Not Soo Deep Photo</title>
     <script src="theme.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="photo-sets.js" defer></script>
     <script src="photo-viewer.js" defer></script>
+    <script src="photo-library.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -33,37 +35,11 @@
       <header class="page-heading">
         <p class="eyebrow">A collection of moments</p>
         <h1>Photo sets</h1>
-        <p>Two ways of looking, gathered into small collections.</p>
+        <p>Browse photographs gathered into small collections.</p>
       </header>
 
-      <section class="collection-grid" aria-label="Photo collections">
-        <article class="collection-card">
-          <button class="photo-trigger" type="button">
-            <img
-              src="images/bnw/beachdays-14.jpg"
-              alt="A small boat crossing the water beneath distant mountains."
-              loading="lazy"
-              decoding="async">
-          </button>
-          <div class="collection-info">
-            <span class="collection-kicker">Digital / 5 photographs</span>
-            <a class="collection-title" href="bnw.html">Black and white <span aria-hidden="true">&nearr;</span></a>
-          </div>
-        </article>
-        <article class="collection-card">
-          <button class="photo-trigger" type="button">
-            <img
-              src="images/film/4-img27.jpg"
-              alt="A seated portrait framed by the arches of a building."
-              loading="lazy"
-              decoding="async">
-          </button>
-          <div class="collection-info">
-            <span class="collection-kicker">Analog / 10 photographs</span>
-            <a class="collection-title" href="film.html">Shot on film <span aria-hidden="true">&nearr;</span></a>
-          </div>
-        </article>
-      </section>
+      <p data-photo-library-error hidden role="status"></p>
+      <section class="collection-grid" aria-label="Photo collections"></section>
     </main>
 
     <dialog class="photo-dialog" aria-label="Photo details">

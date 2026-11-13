@@ -1,23 +1,34 @@
-# Photo inventory
+# Photo folders
 
-All source photographs are stored in `images/`. The HTML pages refer to these original files directly; no image files were removed or renamed.
+Photographs live under `photos/`, grouped by set and then by the caption shown
+for that group:
 
-| Photo path | Used on |
-| --- | --- |
-| `images/bnw/10-1-26-02.jpg` | `bnw.html` |
-| `images/bnw/10-1-26-16.jpg` | `bnw.html` |
-| `images/bnw/11-1-26-11.jpg` | `index.html`, `bnw.html` |
-| `images/bnw/20260201-DSV_8554.jpg` | `bnw.html` |
-| `images/bnw/beachdays-14.jpg` | `projects.html`, `bnw.html` |
-| `images/film/16-img18.jpg` | `film.html` |
-| `images/film/17-img17.jpg` | `about.html`, `film.html` |
-| `images/film/20-img14.jpg` | `film.html` |
-| `images/film/22-img12.jpg` | `film.html` |
-| `images/film/30-img03.jpg` | `film.html` |
-| `images/film/4-img27.jpg` | `projects.html`, `film.html` |
-| `images/film/Kodak Kodacolor 100 Edits-14.jpg` | `film.html` |
-| `images/film/Kodak Kodacolor 100 Edits-22.jpg` | `film.html` |
-| `images/film/Kodak Kodacolor 100 Edits-29.jpg` | `film.html` |
-| `images/film/Kodak Kodacolor 100 Edits-32.jpg` | `film.html` |
+```text
+photos/
+  bnw/
+    Digital/
+      your-photo.jpg
+  film/
+    Kodak EC200 - Portra 400/
+      your-photo.jpg
+    Canon EOS XS - Kodacolor 100/
+      your-photo.jpg
+```
 
-There are 5 black-and-white photographs and 10 film photographs (15 unique photos total).
+Add a description folder inside a set, then put supported images (`.jpg`,
+`.jpeg`, `.png`, `.webp`, or `.gif`) directly inside it. The set page discovers
+every description folder and photo automatically; no code changes are needed.
+The `photo-index.json` Jekyll template discovers the photos during the GitHub
+Pages build, so the site must be published again to show additions. The
+description folder name appears as the caption when a photo is opened.
+
+For a local preview, run `node preview-server.js` from the project folder and
+open `http://127.0.0.1:8765`. Reload the page after adding photos or folders.
+
+To add a new description, create a folder beneath its set using the caption you
+want displayed. To add a new set, add its folder and an entry to `photo-sets.js`. The entry's
+`id` must match the folder name; add its title, medium, introduction, cover
+path, and cover alt text there.
+
+The existing sets contain 5 black-and-white photographs and 10 film
+photographs (15 unique photos total).

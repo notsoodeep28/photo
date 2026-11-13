@@ -1,56 +1,57 @@
-const photoGrid = document.querySelector(".photo-grid");
+let layoutFrame = 0;
 
-if (photoGrid) {
+function layoutPhotoGrid(photoGrid) {
   const photos = [...photoGrid.querySelectorAll(":scope > figure")];
-  const rowSize = 1;
-
-  function resetMasonry() {
-    photoGrid.classList.remove("is-masonry");
-    for (const photo of photos) {
-      photo.style.removeProperty("grid-column");
-      photo.style.removeProperty("grid-row");
-    }
+  if (photos.length === 0) {
+    return;
   }
 
-  function layoutPhotos() {
-    const gridStyle = getComputedStyle(photoGrid);
-    const columnCount = gridStyle.gridTemplateColumns.trim().split(/\s+/).length;
-    const columnWidth = Number.parseFloat(gridStyle.gridTemplateColumns);
-    const columnGap = Number.parseFloat(gridStyle.columnGap);
-
-    if (
-      !columnWidth ||
-      photos.some((photo) => !photo.querySelector("img[width][height]"))
-    ) {
-      resetMasonry();
-      return;
-    }
-
-    resetMasonry();
-    const figureHeights = photos.map((photo) => photo.getBoundingClientRect().height);
-    photoGrid.classList.add("is-masonry");
-
-    const nextRows = Array(columnCount).fill(1);
-
-    for (const [index, photo] of photos.entries()) {
-      const shortestColumn = nextRows.indexOf(Math.min(...nextRows));
-      const rowSpan = Math.max(
-        1,
-        Math.ceil((figureHeights[index] + columnGap) / rowSize)
-      );
-
-      photo.style.gridColumn = String(shortestColumn + 1);
-      photo.style.gridRow = `${nextRows[shortestColumn]} / span ${rowSpan}`;
-      nextRows[shortestColumn] += rowSpan;
-    }
+  photoGrid.classList.remove("is-masonry");
+  for (const photo of photos) {
+    photo.style.removeProperty("grid-column");
+    photo.style.removeProperty("grid-row");
   }
 
-  let resizeFrame = 0;
-  window.addEventListener("resize", () => {
-    resetMasonry();
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(layoutPhotos);
-  });
+  const gridStyle = getComputedStyle(photoGrid);
+  const columnCount = gridStyle.gridTemplateColumns.trim().split(/\s+/).length;
+  const rowGap = Number.parseFloat(gridStyle.rowGap);
+  const rowSize = 8;
+  if (!columnCount || !Number.isFinite(rowGap)) {
+    return;
+  }
 
-  layoutPhotos();
+  const photoHeights = photos.map((photo) => photo.getBoundingClientRect().height);
+  photoGrid.classList.add("is-masonry");
+
+  const nextRows = Array(columnCount).fill(1);
+  for (const [index, photo] of photos.entries()) {
+    const shortestColumn = nextRows.indexOf(Math.min(...nextRows));
+    const rowSpan = Math.max(
+      1,
+      Math.ceil((photoHeights[index] + rowGap) / (rowSize + rowGap))
+    );
+
+    photo.style.gridColumn = String(shortestColumn + 1);
+    photo.style.gridRow = `${nextRows[shortestColumn]} / span ${rowSpan}`;
+    nextRows[shortestColumn] += rowSpan;
+  }
 }
+
+function layoutPhotoGrids() {
+  cancelAnimationFrame(layoutFrame);
+  layoutFrame = requestAnimationFrame(() => {
+    document.querySelectorAll(".photo-grid").forEach(layoutPhotoGrid);
+  });
+}
+
+window.layoutPhotoGrids = layoutPhotoGrids;
+window.addEventListener("resize", layoutPhotoGrids);
+document.addEventListener(
+  "load",
+  (event) => {
+    if (event.target instanceof HTMLImageElement && event.target.closest(".photo-grid")) {
+      layoutPhotoGrids();
+    }
+  },
+  true
+);
