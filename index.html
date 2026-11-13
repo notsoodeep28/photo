@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0B0B0F">
+    <meta name="description" content="Not Soo Deep Photo - digital and film photography by Daniel.">
+    <title>Not Soo Deep Photo</title>
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="photo-viewer.js" defer></script>
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Not Soo Deep Photo home">NOT SOO DEEP <span>PHOTO</span></a>
+      <div class="site-controls">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="projects.html">Photo sets</a>
+          <a href="about.html">About</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Turn light theme on" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="bulb-glass" d="M9 18h6m-5 3h4m-2-19a7 7 0 0 0-4 12.75c.6.4 1 1 1 1.75h6c0-.75.4-1.35 1-1.75A7 7 0 0 0 12 2Z" />
+            <path d="M12 1V0m8 4 1-1m-18 1L2 3m18 8h2M2 11H0" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="home-hero" aria-labelledby="home-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Independent photography / digital &amp; film</p>
+          <h1 id="home-title">NOT SOO<br>DEEP PHOTO</h1>
+          <p class="hero-intro">Curiosity makes life more colorful.</p>
+          <a class="text-link" href="projects.html">Explore the photo sets <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <figure class="hero-image">
+          <button class="photo-trigger" type="button">
+            <img
+              src="images/bnw/11-1-26-11.jpg"
+              alt="A person in a Patriots jersey, photographed from behind."
+              fetchpriority="high"
+              decoding="async">
+          </button>
+          <figcaption class="photo-description">Black and white / digital</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <dialog class="photo-dialog" aria-label="Photo details">
+      <button class="photo-dialog-close" type="button" aria-label="Close photo details">Close</button>
+      <figure>
+        <img class="photo-dialog-image" alt="">
+        <figcaption class="photo-dialog-caption"></figcaption>
+      </figure>
+    </dialog>
+
+    <footer class="site-footer">
+      <span>Not Soo Deep Photo</span>
+      <a href="https://instagram.com/not_soo_deep" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">&nearr;</span></a>
+    </footer>
+  </body>
+</html>

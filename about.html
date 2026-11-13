@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0B0B0F">
+    <meta name="description" content="About Not Soo Deep Photo and the ideas behind the work.">
+    <title>About - Not Soo Deep Photo</title>
+    <script src="theme.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="photo-viewer.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Not Soo Deep Photo home">NOT SOO DEEP <span>PHOTO</span></a>
+      <div class="site-controls">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="projects.html">Photo sets</a>
+          <a href="about.html" aria-current="page">About</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Turn light theme on" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="bulb-glass" d="M9 18h6m-5 3h4m-2-19a7 7 0 0 0-4 12.75c.6.4 1 1 1 1.75h6c0-.75.4-1.35 1-1.75A7 7 0 0 0 12 2Z" />
+            <path d="M12 1V0m8 4 1-1m-18 1L2 3m18 8h2M2 11H0" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="page-main">
+      <section class="about-layout" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="eyebrow">A little about the work</p>
+          <h1 id="about-title">Made to notice.</h1>
+          <p>
+            NOT SOO DEEP PHOTO began as a hobby and, over time, became an essential part of my life, my personality, and my lifestyle. I find inspiration everywhere, and I truly believe that anything can become a great photograph.
+          </p>
+          <nav class="social-links" aria-label="Elsewhere">
+            <a href="https://instagram.com/not_soo_deep" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">&nearr;</span></a>
+            <a href="https://www.lomography.com/homes/not_soo_deep" target="_blank" rel="noopener noreferrer">Lomography <span aria-hidden="true">&nearr;</span></a>
+          </nav>
+        </div>
+        <figure class="about-image">
+          <button class="photo-trigger" type="button">
+            <img
+              src="images/film/17-img17.jpg"
+              alt="A seated portrait framed by the arches of a building."
+              loading="lazy"
+              decoding="async">
+          </button>
+          <figcaption class="photo-description">Kodak EC200 / Portra 400</figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <dialog class="photo-dialog" aria-label="Photo details">
+      <button class="photo-dialog-close" type="button" aria-label="Close photo details">Close</button>
+      <figure>
+        <img class="photo-dialog-image" alt="">
+        <figcaption class="photo-dialog-caption"></figcaption>
+      </figure>
+    </dialog>
+
+    <footer class="site-footer">
+      <a href="index.html">Back to home <span aria-hidden="true">&larr;</span></a>
+      <a href="projects.html">Browse photo sets <span aria-hidden="true">&rarr;</span></a>
+    </footer>
+  </body>
+</html>
